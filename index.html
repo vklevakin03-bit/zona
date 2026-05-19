@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZONA — Crypto Exchange</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Логотип -->
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">Z</div>
+        <span class="logo-text">ZONA</span>
+      </div>
+    </div>
+
+    <!-- Форма обмена -->
+    <div class="card">
+
+      <!-- Переключатель курса -->
+      <div class="rate-toggle">
+        <button class="toggle-btn active" id="btn-fixed" onclick="setType('fixed')">Фиксированный</button>
+        <button class="toggle-btn" id="btn-float" onclick="setType('float')">Плавающий</button>
+      </div>
+
+      <!-- Отдаю -->
+      <div class="field-group">
+        <label>Отдаю</label>
+        <div class="input-row">
+          <input type="number" id="fromAmount" placeholder="0.00" oninput="onFromInput()" />
+          <select id="fromCcy" onchange="onCcyChange()">
+            <option value="BTC">BTC</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Стрелка -->
+      <div class="arrow">⇅</div>
+
+      <!-- Получаю -->
+      <div class="field-group">
+        <label>Получаю</label>
+        <div class="input-row">
+          <input type="number" id="toAmount" placeholder="0.00" oninput="onToInput()" />
+          <select id="toCcy" onchange="onCcyChange()">
+            <option value="ETH">ETH</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Адрес получателя -->
+      <div class="field-group">
+        <label>Адрес получателя</label>
+        <input type="text" id="toAddress" placeholder="Введите адрес кошелька" class="address-input" />
+      </div>
+
+      <!-- Курс -->
+      <div class="rate-info" id="rateInfo">Загрузка курса...</div>
+
+      <!-- Кнопка -->
+      <button class="exchange-btn" onclick="createOrder()">Обменять</button>
+
+      <!-- Ошибка -->
+      <div class="error" id="errorMsg"></div>
+    </div>
+
+    <!-- Футер -->
+    <div class="footer">
+      <a href="https://fixedfloat.com" target="_blank">Услуги обмена предоставляет FixedFloat</a>
+    </div>
+
+  </div>
+
+  <!-- Модалка с результатом -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>Заказ создан ✅</h2>
+      <div id="modalBody"></div>
+      <button class="exchange-btn" onclick="closeModal()">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

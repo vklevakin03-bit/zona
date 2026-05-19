@@ -1,86 +1,60 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZONA — Crypto Exchange</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZONA</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-
-    <!-- Логотип -->
-    <div class="header">
-      <div class="logo">
-        <div class="logo-icon">Z</div>
-        <span class="logo-text">ZONA</span>
-      </div>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-text">ZONA</span>
     </div>
 
-    <!-- Форма обмена -->
     <div class="card">
-
-      <!-- Переключатель курса -->
       <div class="rate-toggle">
-        <button class="toggle-btn active" id="btn-fixed" onclick="setType('fixed')">Фиксированный</button>
-        <button class="toggle-btn" id="btn-float" onclick="setType('float')">Плавающий</button>
+        <button class="rate-btn active" id="btn-fixed" onclick="setRate('fixed')">Фиксированный</button>
+        <button class="rate-btn" id="btn-floating" onclick="setRate('floating')">Плавающий</button>
       </div>
 
-      <!-- Отдаю -->
-      <div class="field-group">
+      <div class="field">
         <label>Отдаю</label>
         <div class="input-row">
-          <input type="number" id="fromAmount" placeholder="0.00" oninput="onFromInput()" />
-          <select id="fromCcy" onchange="onCcyChange()">
-            <option value="BTC">BTC</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Стрелка -->
-      <div class="arrow">⇅</div>
-
-      <!-- Получаю -->
-      <div class="field-group">
-        <label>Получаю</label>
-        <div class="input-row">
-          <input type="number" id="toAmount" placeholder="0.00" oninput="onToInput()" />
-          <select id="toCcy" onchange="onCcyChange()">
+          <input type="number" id="from-amount" placeholder="0.0" oninput="calcRate()">
+          <select id="from-currency" onchange="calcRate()">
+            <option value="BTCLN">BTC</option>
+            <option value="USDTERC20">USDT</option>
             <option value="ETH">ETH</option>
           </select>
         </div>
       </div>
 
-      <!-- Адрес получателя -->
-      <div class="field-group">
-        <label>Адрес получателя</label>
-        <input type="text" id="toAddress" placeholder="Введите адрес кошелька" class="address-input" />
+      <div class="arrow">⇅</div>
+
+      <div class="field">
+        <label>Получаю</label>
+        <div class="input-row">
+          <input type="number" id="to-amount" placeholder="0.0" readonly>
+          <select id="to-currency" onchange="calcRate()">
+            <option value="USDTERC20">USDT</option>
+            <option value="BTCLN">BTC</option>
+            <option value="ETH">ETH</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Курс -->
-      <div class="rate-info" id="rateInfo">Загрузка курса...</div>
+      <div class="field">
+        <label>Адрес получателя</label>
+        <input type="text" id="recipient-address" placeholder="Введите адрес кошелька">
+      </div>
 
-      <!-- Кнопка -->
       <button class="exchange-btn" onclick="createOrder()">Обменять</button>
 
-      <!-- Ошибка -->
-      <div class="error" id="errorMsg"></div>
+      <p id="status"></p>
     </div>
 
-    <!-- Футер -->
-    <div class="footer">
-      <a href="https://fixedfloat.com" target="_blank">Услуги обмена предоставляет FixedFloat</a>
-    </div>
-
-  </div>
-
-  <!-- Модалка с результатом -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <h2>Заказ создан ✅</h2>
-      <div id="modalBody"></div>
-      <button class="exchange-btn" onclick="closeModal()">Закрыть</button>
-    </div>
+    <p class="footer">Услуги обмена предоставляет <a href="https://fixedfloat.com" target="_blank">FixedFloat</a></p>
   </div>
 
   <script src="app.js"></script>

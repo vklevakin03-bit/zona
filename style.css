@@ -5,8 +5,8 @@
 }
 
 body {
-  background: #0d0f1a;
-  color: #e0e0ff;
+  background: #0a0a0f;
+  color: #fff;
   font-family: 'Segoe UI', sans-serif;
   min-height: 100vh;
   display: flex;
@@ -14,45 +14,85 @@ body {
   justify-content: center;
 }
 
-.app {
+.container {
   width: 100%;
   max-width: 420px;
-  padding: 24px 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-/* Логотип */
-.header {
-  display: flex;
-  justify-content: center;
-}
-
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #6c63ff, #00d4ff);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  font-weight: 900;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+  text-align: center;
 }
 
 .logo-text {
-  font-size: 28px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #6c63ff, #00d4ff);
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00f0ff, #7b2ff7);
   -webkit-background-clip: text;
-  -webkit-text-fill-co…
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 8px;
+  text-shadow: none;
+  filter: drop-shadow(0 0 20px #00f0ff88);
+}
+
+.card {
+  background: #13131f;
+  border: 1px solid #2a2a3d;
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 0 40px #7b2ff720;
+}
+
+.rate-toggle {
+  display: flex;
+  background: #0a0a0f;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.rate-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.rate-btn.active {
+  background: linear-gradient(135deg, #00f0ff33, #7b2ff733);
+  color: #fff;
+  border: 1px solid #00f0ff55;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input-row input {…
